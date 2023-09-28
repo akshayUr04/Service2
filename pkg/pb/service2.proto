@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pkg/pb";
+
+service Service2{
+    rpc Methods (methodRequest)returns (methodResponce){}
+}
+
+message methodRequest{
+    int64 method = 1;
+    int64  waitTime =2;
+}
+
+message methodResponce{
+    repeated string userName =1;
+}

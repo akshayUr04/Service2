@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pkg/pb";
+
+service UserService{
+    rpc GetAllUserData(GetAllUserDataReq)returns(GetAllUserDataResult){}
+}
+
+message GetAllUserDataReq{
+
+}
+
+message GetAllUserDataResult {
+    repeated string Name  =1;
+ }
+
