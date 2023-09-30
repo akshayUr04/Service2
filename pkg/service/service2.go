@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 	"time"
 	"x-tentioncrew/microservice-2/pkg/client"
 	"x-tentioncrew/microservice-2/pkg/pb"
@@ -14,7 +15,8 @@ type Server struct {
 
 func (s *Server) Methods(ctx context.Context, req *pb.MethodRequest) (*pb.MethodResponce, error) {
 	if req.Method == 1 {
-		res, err := s.UserSvc.Methods()
+		fmt.Println("in method")
+		res, err := s.UserSvc.GetUserData()
 		if err != nil {
 			return nil, err
 		}
@@ -22,7 +24,8 @@ func (s *Server) Methods(ctx context.Context, req *pb.MethodRequest) (*pb.Method
 		time.Sleep(time.Duration(req.WaitTime) * time.Second)
 		return &pb.MethodResponce{UserName: names}, nil
 	} else {
-		res, err := s.UserSvc.Methods()
+		time.Sleep(time.Duration(req.WaitTime) * time.Second)
+		res, err := s.UserSvc.GetUserData()
 		if err != nil {
 			return nil, err
 		}

@@ -35,7 +35,7 @@ func NewService2Client(cc grpc.ClientConnInterface) Service2Client {
 
 func (c *service2Client) Methods(ctx context.Context, in *MethodRequest, opts ...grpc.CallOption) (*MethodResponce, error) {
 	out := new(MethodResponce)
-	err := c.cc.Invoke(ctx, "/pb.Service2/methods", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/pb.Service2/Methods", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -80,7 +80,7 @@ func _Service2_Methods_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/pb.Service2/methods",
+		FullMethod: "/pb.Service2/Methods",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(Service2Server).Methods(ctx, req.(*MethodRequest))
@@ -96,7 +96,7 @@ var Service2_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*Service2Server)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "methods",
+			MethodName: "Methods",
 			Handler:    _Service2_Methods_Handler,
 		},
 	},
