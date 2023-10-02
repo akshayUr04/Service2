@@ -6,11 +6,11 @@ import (
 )
 
 type Config struct {
-	Port           string `mapstructure:"PORT"`
+	M2PORT         string `mapstructure:"M2PORT"`
 	UserServiceUrl string `mapstructure:"USER_SERVICE_URL"`
 }
 
-var envs = []string{"PORT", `mapstructure:"USER_SERVICE_URL"`}
+var envs = []string{"M2PORT", "USER_SERVICE_URL"}
 
 func LoadConfig() (cfg Config, err error) {
 	var config Config
